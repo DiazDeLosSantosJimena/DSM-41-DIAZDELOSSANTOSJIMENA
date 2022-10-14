@@ -13,8 +13,8 @@ class StudentsController extends Controller
      */
     public function index()
     {
-        //Definimos nuestra vista
-        return students::all();
+        return view('students.index');
+        
     }
 
     /**
@@ -24,7 +24,7 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        //
+        return view('students.add');
     }
 
     /**
@@ -57,7 +57,7 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('students.edit');
     }
 
     /**

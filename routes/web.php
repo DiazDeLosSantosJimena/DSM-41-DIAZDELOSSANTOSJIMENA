@@ -30,7 +30,7 @@ Route::delete('mirutaapiD',[SubjectsController::class, 'index'])->name('subject'
 
 Route::resource('groups',GroupsController::class);
 Route::resource('subject',SubjectsController::class);
-Route::resource('students',SubjectsController::class);
+Route::resource('students',StudentsController::class);
 
 /* Profesiones */
-Route::resource('profesions',ProfesionsController::class);
+//Route::resource('profesions',ProfesionsController::class);

@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+/* Mandamos a llamar nuestro modelo  */
 use App\Models\groups;
 use Illuminate\Http\Request;
 
@@ -13,8 +14,11 @@ class GroupsController extends Controller
      */
     public function index()
     {
-        //Definimos nuestra vista
-        return groups::all();
+        /* consulta eloquent larvavel */
+        $groups = groups::all();
+         //return $groups;
+       return view('groups.index', compact('groups'));
+       
     }
 
     /**
@@ -24,7 +28,7 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        //
+        return view('groups.add');
     }
 
     /**
@@ -46,7 +50,12 @@ class GroupsController extends Controller
      */
     public function show($id)
     {
-        //
+        $group = groups::find($id);
+
+        return $group;
+        return view('groups.show');
+
+
     }
 
     /**
@@ -57,7 +66,7 @@ class GroupsController extends Controller
      */
     public function edit($id)
     {
-        //
+        return view('groups.edit');
     }
 
     /**
