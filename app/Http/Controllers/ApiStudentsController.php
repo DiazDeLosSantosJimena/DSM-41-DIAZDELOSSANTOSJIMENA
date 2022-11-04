@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\students;
-use App\Models\subjects;
 use Illuminate\Http\Request;
 
-class StudentsController extends Controller
+class ApiStudentsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +14,7 @@ class StudentsController extends Controller
     public function index()
     {
         $students = students::all();
-        return view('Students.index', compact('students'));
-        
+        return Response()->json(['Estudiantes'=>$students]);
     }
 
     /**
@@ -26,12 +24,10 @@ class StudentsController extends Controller
      */
     public function create()
     {
-        $subjects = subjects::all('id','name');
-        return view('Students.add', compact('subjects'));
+        //
     }
 
     /**
-     * 
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -39,11 +35,7 @@ class StudentsController extends Controller
      */
     public function store(Request $request)
     {
-        
-        $input=$request->all();
-        //return $input;
-        students::create($input);
-        return redirect('students')->with('message','Se ha creado correctamente al estudiante');
+        //
     }
 
     /**
@@ -54,8 +46,7 @@ class StudentsController extends Controller
      */
     public function show($id)
     {
-        $student = students::find($id);
-        return view('Students.show')->with('students',$student);
+        //
     }
 
     /**
@@ -66,9 +57,7 @@ class StudentsController extends Controller
      */
     public function edit($id)
     {
-        $subjects = subjects::all('id','name');
-        $student = students::find($id);
-        return view('Students.edit',compact('subjects'))->with('students', $student);
+        //
     }
 
     /**
@@ -80,10 +69,7 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $student = students::find($id);
-        $input=$request->all();
-        $student->update($input);
-        return redirect('students')->with('message','Se ha actualizado el registro correctamente');
+        //
     }
 
     /**

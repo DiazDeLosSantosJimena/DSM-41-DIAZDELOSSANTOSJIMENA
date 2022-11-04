@@ -18,11 +18,6 @@
             class="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
 </div>
 
-
-<!-- Content Row -->
-
-
-
 <!-- Content Row -->
 <div class="row">
 
@@ -59,10 +54,11 @@
                         <div class="card-header py-3">
                             <h3 class="m-1 font-weight-bold text-primary">Lista De Asignaturas</h3>
                             <div class="d-flex justify-content-end">
-                                    <a class="btn btn-primary" href="subject/create"  ><i class="fa-solid fa-layer-group"></i></i></a>
+                                    <a class="btn btn-primary" href="subjects/create"  ><i class="fa-solid fa-layer-group"></i></i></a>
                             </div>
                         </div>
                         <div class="card-body">
+                        @include('components.flash_alerts')    
                         <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -82,213 +78,20 @@
                                         </tr>
                                     </tfoot>
                                     <tbody>
+                                    @foreach($subjects as $subject)
                                         <tr>
-                                            <td>1</td>
-                                            <td>Tiger Nixon</td>
-                                            <td>System Architect</td>
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="subject/{subject}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
+                                            <td>{{$subject->id}}</td>
+                                            <td>{{$subject->name}}</td>
+                                            <td>{{$subject->description}}</td>
+                                            <td>    
+                                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                        <a class="btn btn-success m-3" href="subjects/{{$subject->id}}" ><i class="fa-regular fa-eye"></i></a>
+                                                        <a class="btn btn-warning m-3" href="subjects/{{$subject->id}}/edit"><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
+                                            </div>            
                                             </td>
                                         </tr>
-                                        <tr>
-                                             <td>2</td>
-                                            <td>Garrett Winters</td>
-                                            <td>Accountant</td>
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="students/{student}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
-                                            </td>
-                                        </tr>
-                                        <tr> 
-                                            <td>3</td>
-                                            <td>Ashton Cox</td>
-                                            <td>Junior Technical Author</td>
-
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="students/{student}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>4</td>
-                                            <td>Cedric Kelly</td>
-                                            <td>Senior Javascript Developer</td>
-                                            
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="students/{student}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>5</td>
-                                            <td>Airi Satou</td>
-                                            <td>Accountant</td>
-                                            
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="students/{student}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>6</td>
-                                            <td>Brielle Williamson</td>
-                                            <td>Integration Specialist</td>
-                                           
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="students/{student}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>7</td>
-                                            <td>Herrod Chandler</td>
-                                            <td>Sales Assistant</td>
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="students/{student}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>8</td>
-                                            <td>Rhona Davidson</td>
-                                            <td>Integration Specialist</td>
-                                            
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="students/{student}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>9</td>
-                                            <td>Colleen Hurst</td>
-                                            <td>Javascript Developer</td>
-                                            
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="students/{student}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
-                                            </td>
-                                        </tr>
-                                        <tr>
-                                            <td>10</td>
-                                            <td>Sonya Frost</td>
-                                            <td>Software Engineer</td>
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="#"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="students/{student}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
-                                            </td>
-                                        </tr>
-                                        
+                                        @endforeach  
                                     </tbody>
                                 </table>
                             </div>

@@ -54,6 +54,7 @@
         </div>
     </div>
             <div class="card-body">
+            @include('components.flash_alerts')   
                 <!-- DataTales Example -->
                 <div class="card shadow mb-4">
                         <div class="card-header py-3">
@@ -63,7 +64,6 @@
                             </div>
                         </div>
                         <div class="card-body">
-                           
                             <div class="table-responsive">
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
@@ -90,31 +90,21 @@
                                             <td>{{$group->id}}</td>
                                             <td>{{$group->name}}</td>
                                             <td>{{$group->description}}</td>
-                                            <td>{{$group->student_id}}</td>
-                                            <td>
-                                                
-                                            <div class="row col-12">
-                                                <div class="col-4">                                                
-                                                    <a class="btn btn-success m-3" href="groups/{{$group->id}}"  ><i class="fa-regular fa-eye"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a class="btn btn-warning m-3" href="groups/{group}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                </div>
-                                                <div class="col-4">
-                                                    <a type="button" class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
-                                                </div>
-                                            </div>
-                                           
+                                            <td>{{$group->students->name}}</td>
+                                            <td>    
+                                            <div class="btn-group" role="group" aria-label="Basic mixed styles example">
+                                                        <a class="btn btn-success m-3" href="groups/{{$group->id}}" ><i class="fa-regular fa-eye"></i></a>
+                                                        <a class="btn btn-warning m-3" href="groups/{{$group->id}}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
+                                                        <a class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
+                                            </div>            
                                             </td>
                                         </tr>
-                                        @endforeach
-                                        
+                                        @endforeach  
                                     </tbody>
                                 </table>
                             </div>
                         </div>
                     </div>
-          
             </div>
         </div>
 
@@ -130,5 +120,6 @@
 
 </div>
 <!-- End of Main Content -->
+
 @include('layouts.footer')
 

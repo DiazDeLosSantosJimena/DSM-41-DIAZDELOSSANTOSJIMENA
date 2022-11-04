@@ -35,13 +35,16 @@
             </div>
             <div class="card-body">
                 
-            <form>
-                <label for=""> Nombre:</label>
-                <input class="form-control" type="text" value="" name="">
-                <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
+            <form action="{{url('subjects/' .$subjects->id) }}" method="post">
+                {!! csrf_field() !!}
+                @method("PATCH")
+                <label> Nombre:</label>
+                <input class="form-control" type="text" name="name" id="name"  value="{{$subjects->name}}">
+                <label> Descripción:</label>
+                <input class="form-control" type="text" name="description" id="description" value="{{$subjects->description}}">
                 <div class="row">
-                    <button type="submit" class="btn btn-primary m-3">Guadar</button>
+                    <a class="btn btn-danger m-3"  href="/subjects" >Cancelar</a>
+                    <button type="submit" class="btn btn-primary m-3" value="update">Guadar</button>
 
                 </div>
             </form>

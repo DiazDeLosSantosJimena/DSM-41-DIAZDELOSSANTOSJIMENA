@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 /* Mandamos a llamar nuestro modelo  */
 use App\Models\groups;
+use App\Models\students;
 use Illuminate\Http\Request;
 
 class GroupsController extends Controller
@@ -17,7 +18,7 @@ class GroupsController extends Controller
         /* consulta eloquent larvavel */
         $groups = groups::all();
          //return $groups;
-       return view('groups.index', compact('groups'));
+       return view('Groups.index', compact('groups'));
        
     }
 
@@ -28,7 +29,8 @@ class GroupsController extends Controller
      */
     public function create()
     {
-        return view('groups.add');
+        $students = students::all('id','name');
+        return view('Groups.add', compact('students'));
     }
 
     /**
@@ -39,7 +41,9 @@ class GroupsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $input=$request->all();
+        groups::create($input);
+        return redirect('groups')->with('message','Se ha creado correctamente el grupo');
     }
 
     /**
@@ -51,9 +55,7 @@ class GroupsController extends Controller
     public function show($id)
     {
         $group = groups::find($id);
-
-        return $group;
-        return view('groups.show');
+        return view('Groups.show')->with('groups',$group);
 
 
     }
@@ -66,7 +68,9 @@ class GroupsController extends Controller
      */
     public function edit($id)
     {
-        return view('groups.edit');
+        $students = students::all('id','name');
+        $group = groups::find($id);
+        return view('Groups.edit', compact('students'))->with('groups', $group);
     }
 
     /**
@@ -78,7 +82,11 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+
+        $group = groups::find($id);
+        $input=$request->all();
+        $group->update($input);
+        return redirect('groups')->with('message','Se ha actualizado el registro correctamente');
     }
 
     /**

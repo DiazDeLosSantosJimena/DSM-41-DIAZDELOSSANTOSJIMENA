@@ -23,13 +23,13 @@ Route::get('/', function () {
 });
 //Ruta resource
 //Route::resource('resource',Practica5::class);
-Route::get('mirutaapiG',[SubjectsController::class, 'index'])->name('subject');
-Route::post('mirutaapiP',[SubjectsController::class, 'index'])->name('subject');
-Route::put('mirutaapiPU',[SubjectsController::class, 'index'])->name('subject');
-Route::delete('mirutaapiD',[SubjectsController::class, 'index'])->name('subject');
+//Route::get('mirutaapiG',[SubjectsController::class, 'index'])->name('subject');
+//Route::post('mirutaapiP',[SubjectsController::class, 'index'])->name('subject');
+//Route::patch('sub/{id}/edit',SubjectsController::class)->name('sub');
+//Route::delete('mirutaapiD',[SubjectsController::class, 'index'])->name('subject');
 
 Route::resource('groups',GroupsController::class);
-Route::resource('subject',SubjectsController::class);
+Route::resource('subjects',SubjectsController::class);
 Route::resource('students',StudentsController::class);
 
 /* Profesiones */

@@ -2,10 +2,9 @@
 
 namespace App\Http\Controllers;
 use App\Models\subjects;
-use GuzzleHttp\Psr7\Response;
 use Illuminate\Http\Request;
 
-class SubjectsController extends Controller
+class ApiSubjectsController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -14,11 +13,8 @@ class SubjectsController extends Controller
      */
     public function index()
     {
-        //Definimos nuestra vista
         $subjects = subjects::all();
-        return view('subjects.index', compact('subjects'));
-        //return Response()->json(['Asignatura'=>$subjects]);
-
+        return Response()->json(['Asignatura'=>$subjects]);
     }
 
     /**
@@ -28,7 +24,7 @@ class SubjectsController extends Controller
      */
     public function create()
     {
-        return view('Subjects.add');
+        //
     }
 
     /**
@@ -39,20 +35,7 @@ class SubjectsController extends Controller
      */
     public function store(Request $request)
     {
-        $rules =[
-            'name'=> 'required|min:10|string',
-            'description' =>'required|min:10'
-        ];
-
-        $message = [
-            'name.required' => 'El nombre es requerido',
-            'description.required' => 'La descripcion es requerida',
-        ];
-
-        $this->validate($request, $rules, $message);
-        $input=$request->all();
-        subjects::create($input);
-        return redirect('subjects')->with('message','Se ha creado correctamente la asignatura');
+        //
     }
 
     /**
@@ -63,8 +46,7 @@ class SubjectsController extends Controller
      */
     public function show($id)
     {
-        $subject = subjects::find($id);
-        return view('Subjects.show')->with('subjects',$subject);
+        //
     }
 
     /**
@@ -75,8 +57,7 @@ class SubjectsController extends Controller
      */
     public function edit($id)
     {
-        $subject = subjects::find($id);
-        return view('Subjects.edit')->with('subjects', $subject);
+        //
     }
 
     /**
@@ -88,16 +69,7 @@ class SubjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $subject = subjects::find($id);
-        $rules =[
-            'name'=> 'required|min:25',
-            'description' =>'required|min:100'
-        ];
-
-        $this->validate($request, $rules);
-        $input=$request->all();
-        $subject->update($input);
-        return redirect('subjects')->with('message','Se ha actualizado el registro correctamente');
+        //
     }
 
     /**

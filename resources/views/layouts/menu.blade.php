@@ -24,7 +24,7 @@
 </li>
 <!-- Nav Item - Dashboard -->
 <li class="nav-item active1">
-    <a class="nav-link" href="/subject">
+    <a class="nav-link" href="/subjects">
     <i class="fa-solid fa-book"></i> 
     <span>Asignatura</span></a>
 </li>

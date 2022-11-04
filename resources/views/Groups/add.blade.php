@@ -34,16 +34,24 @@
                 <h6 class="m-0 font-weight-bold text-primary">Alta Grupo</h6>
             </div>
             <div class="card-body">
-                
-            <form>
-                <label for=""> Nombre:</label>
-                <input class="form-control" type="text" value="" name="">
-                <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                <label for=""> Estudiante:</label>
-                <input class="form-control" type="text" value="" name="">
+                    
+            <form action="{{ url('groups') }}" method="post">
+            {!! csrf_field() !!}
+                <label > Nombre:</label>
+                <input class="form-control" type="text" id="name" name="name">
+                <label for=""> Descripción:</label>
+                <input class="form-control" type="text" id="description" name="description">
+                <div class="form-group">
+                <label for=""> Estudiante Asignado:</label>
+                    <select class="form-control form-select" aria-label="Default select example" name="student_id">
+                    <option selected>Elige el nombre del estudiante</option>
+                        @foreach($students as $student)   
+                    <option value={{$student->id}}>{{$student->name}}</option>
+                       @endforeach
+                    </select>
+                </div>
                 <div class="row">
-                    <button type="submit" class="btn btn-primary m-3">Guadar</button>
+                    <button type="submit" class="btn btn-primary m-3" value="save">Guadar</button>
 
                 </div>
             </form>

@@ -18,7 +18,7 @@ class SubjectsFactory extends Factory
     {
         return [
             //
-            'name' => $this->faker->text(),
+            'name' => $this->faker->name(),
             'description' => $this->faker->text(),
         ];
     }

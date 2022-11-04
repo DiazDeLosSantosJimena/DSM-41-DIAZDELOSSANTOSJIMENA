@@ -31,21 +31,28 @@
         <!-- Project Card Example -->
         <div class="card shadow mb-4">
             <div class="card-header py-3">
-                <h6 class="m-0 font-weight-bold text-primary">Editar Grupo</h6>
+                <h6 class="m-0 font-weight-bold text-primary">Editar Grupos</h6>
             </div>
             <div class="card-body">
                 
-            <form>
-                <input class="form-control" type="text" placeholder="ID Asignado" aria-label="Disabled input example" disabled>
+            <form action="{{url('groups/' .$groups->id) }}" method="post">
+                {!! csrf_field() !!}
+                @method("PATCH")
+                <input class="form-control" type="text" value="{{$groups->id}}" aria-label="Disabled input example" disabled>
                 <label for=""> Nombre:</label>
-                <input class="form-control" type="text" value="" name="">
-                <label for="exampleFormControlTextarea1" class="form-label">Descripción</label>
-                <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea>
-                <label for=""> Estudiante:</label>
-                <input class="form-control" type="text" value="" name="">
+                <input class="form-control" type="text" id="name" name="name" value="{{$groups->name}}">
+                <label for=""> Apellido:</label>
+                <input class="form-control" type="text" id="description" name="description" value="{{$groups->description}}">
+                <label for=""> Estudiante Asignado:</label>
+                <select class="form-control form-select" aria-label="Default select example" id="student_id" name="student_id" value="{{$groups->subject_id}}">
+                    <option selected>Elige el nombre del estudiante</option>
+                        @foreach($students as $student)
+                    <option value={{$student->id}}>{{$student->name}}</option>
+                       @endforeach
+                    </select>
                 <div class="row">
-                    <button type="submit" class="btn btn-primary m-3">Guadar</button>
-
+                    <a class="btn btn-danger m-3"  href="/groups" >Cancelar</a>
+                    <button type="submit" class="btn btn-primary m-3" value="update">Guadar</button>
                 </div>
             </form>
             </div>

@@ -5,9 +5,9 @@ use Illuminate\Support\Facades\Route;
 //Mnadamos a llamar al controller que se utiliza
 //use App\Http\Controllers\Practica5;
 //use App\Http\Controllers\Practica6;
-use App\Http\Controllers\GroupsController;
-use App\Http\Controllers\StudentsController;
-use App\Http\Controllers\SubjectsController;
+use App\Http\Controllers\ApiGroupsController;
+use App\Http\Controllers\ApiStudentsController;
+use App\Http\Controllers\ApiSubjectsController;
 
 
 /*
@@ -28,16 +28,16 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 //Definimos nuestra ruta get accedemosa nuetsro controlador Practica 5 y accedemos a la función index
 //Route::get('mirutaapi',[Practica5::class, 'index'])->name('resourceapi');
 
-Route::get('mirutaapiG',[SubjectsController::class, 'index'])->name('subject');
+/*Route::get('mirutaapiG',[SubjectsController::class, 'index'])->name('subject');
 Route::post('mirutaapiP',[SubjectsController::class, 'index'])->name('subject');
 Route::put('mirutaapiPU',[SubjectsController::class, 'index'])->name('subject');
 Route::delete('mirutaapiD',[SubjectsController::class, 'index'])->name('subject');
 //Route::edit('mirutaapiE',[SubjectsController::class, 'index'])->name('subject');*/
 
 //Definimos una ruta Apiresource
-Route::Apiresource('subjects',SubjectsController::class); 
-Route::Apiresource('groups',GroupsController::class); 
-Route::Apiresource('students',StudentsController::class); 
+Route::Apiresource('subjects',ApiSubjectsController::class); 
+Route::Apiresource('groups',ApiGroupsController::class); 
+Route::Apiresource('students',ApiStudentsController::class); 
 
 //Definimos una ruta pero solo especifico ciertos resource a utilizar
 /*Route::Apiresource('rapi',Practica6::class)->only(['index','show']);*/

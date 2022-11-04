@@ -12,17 +12,27 @@ class students extends Model
     protected $fillable = [
         'name',
         'surname',
-        'asignatura_id'
+        'subject_id'
         ];
-    
+        
     public function groups() {
+        return $this->hasMany(groups::class, 'student_id', 'id');
+    
+        }
+    /*public function groups() {
         return $this->belongsTo(groups::class);
     
-        }
-    
+        }*/
+    /*
     public function subjects() {
-        return $this->hasMany(subjects::class);
+        return $this->hasMany(subject
+        s::class);
     
         }
+        */
+        public function subjects() {
+            return $this->belongsTo(subjects::class, 'subject_id');
+        
+            }    
     use SoftDeletes;   
 }

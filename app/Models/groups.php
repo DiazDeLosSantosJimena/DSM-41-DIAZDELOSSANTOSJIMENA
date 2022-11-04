@@ -12,12 +12,16 @@ class groups extends Model
     protected $fillable = [
         'name',
         'description',
-        'alumno_id'
+        'student_id'
         ];
     
-        public function students() {
+       /* public function students() {
             return $this->hasMany(students::class);
     
-        }
+        }*/
+        public function students() {
+            return $this->belongsTo(students::class,'student_id');
+        
+            }
     use SoftDeletes;    
 }

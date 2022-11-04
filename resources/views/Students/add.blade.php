@@ -35,16 +35,22 @@
             </div>
             <div class="card-body">
                 
-            <form>
+            <form action="{{ url('students') }}" method="post">
+                {!! csrf_field() !!}  <!-- laravel almacena un token -->
                 <label for=""> Nombre:</label>
-                <input class="form-control" type="text" value="" name="">
+                <input class="form-control" type="text" id="name" name="name">
                 <label for=""> Apellido:</label>
-                <input class="form-control" type="text" value="" name="">
-                <label for=""> Asignatura:</label>
-                <input class="form-control" type="text" value="" name="">
+                <input class="form-control" type="text" id="surname" name="surname">
+                <label for=""> Asignatura Asignada:</label>
+                <select class="form-control form-select" aria-label="Default select example" name="subject_id">
+                    <option selected>Elige la asignatura</option>
+                        @foreach($subjects as $subject)   
+                    <option value={{$subject->id}}>{{$subject->name}}</option>
+                       @endforeach
+                    </select>
                 <div class="row">
-                    <button type="submit" class="btn btn-primary m-3">Guadar</button>
-
+                    <a class="btn btn-danger m-3"  href="/students" >Cancelar</a>
+                    <button type="submit" class="btn btn-primary m-3" value="save">Guadar</button>
                 </div>
             </form>
             </div>

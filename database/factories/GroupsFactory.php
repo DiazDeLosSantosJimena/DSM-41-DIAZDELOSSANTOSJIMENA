@@ -19,7 +19,7 @@ class GroupsFactory extends Factory
     {
         return [
             //
-            'name' => $this->faker->text(),
+            'name' => $this->faker->name(),
             'description' => $this->faker->text(),
             //declaramos la llaves foraneas
             'student_id' => students::all()->random()->id,
