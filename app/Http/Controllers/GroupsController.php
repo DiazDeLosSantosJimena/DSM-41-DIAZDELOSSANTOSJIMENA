@@ -68,9 +68,16 @@ class GroupsController extends Controller
      */
     public function edit($id)
     {
+        /* pasamos parametros y rendereamos nuestra vista  */
+        /* mando a llamar con EORM todos los estudiantes */
         $students = students::all('id','name');
-        $group = groups::find($id);
-        return view('Groups.edit', compact('students'))->with('groups', $group);
+        /* con find obtenemso el registro a editar */
+        $groups = groups::findOrFail($id); 
+        //$group = groups::find($id);
+
+        //return $group;
+
+        return view('Groups.edit', compact('students','groups'));
     }
 
     /**
@@ -82,11 +89,13 @@ class GroupsController extends Controller
      */
     public function update(Request $request, $id)
     {
+    
+        /* desarrolamos nuestra logica */
 
-        $group = groups::find($id);
+        $group = groups::findOrFail($id);
         $input=$request->all();
         $group->update($input);
-        return redirect('groups')->with('message','Se ha actualizado el registro correctamente');
+        return redirect('groups')->with('messageedit','Se ha actualizado el registro correctamente');
     }
 
     /**
@@ -98,5 +107,15 @@ class GroupsController extends Controller
     public function destroy($id)
     {
         //
+
+        /* obtenemos el registro a eliminar */
+
+        $group = groups::findOrFail($id);
+
+        $group->delete();
+        return "El resgistro se elimino con exito";
+        //return view('Groups.index');
+
+
     }
 }

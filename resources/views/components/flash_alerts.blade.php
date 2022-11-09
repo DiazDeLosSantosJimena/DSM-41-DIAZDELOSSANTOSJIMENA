@@ -5,11 +5,11 @@
         @slot( 'message', session('message') )
     @endcomponent
 @endif
-@if (session('info'))
+@if (session('messageedit'))
     @component( 'components.alert' )
         @slot( 'class', 'info' )
         @slot( 'name', 'Información' )
-        @slot( 'message', session('info') )
+        @slot( 'message', session('messageedit') )
     @endcomponent
 @endif
 @if (session('warning'))
