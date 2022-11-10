@@ -88,7 +88,7 @@ class SubjectsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $subject = subjects::find($id);
+        $subject = subjects::findOrFail($id);
         $rules =[
             'name'=> 'required|min:25',
             'description' =>'required|min:100'
@@ -108,6 +108,9 @@ class SubjectsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $subject = subjects::findOrFail($id);
+
+        $subject->delete();
+        return redirect('subjects')->with('danger','correctamente la asignatura');
     }
 }

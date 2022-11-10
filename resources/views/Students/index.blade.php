@@ -60,7 +60,7 @@
                         <div class="card-header py-3">
                             <h3 class="m-1 font-weight-bold text-primary">Lista De Estudiantes</h3>
                             <div class="d-flex justify-content-end">
-                                    <a class="btn btn-primary" href="students/create"  ><i class="fa-solid fa-layer-group"></i></i></a>
+                                    <a class="btn btn-primary" href="students/create"><i class="fa-solid fa-layer-group"></i></i></a>
                             </div>
                         </div>
                         <div class="card-body">
@@ -95,7 +95,13 @@
                                             <div class="btn-group" role="group" aria-label="Basic mixed styles example">
                                                         <a class="btn btn-success m-3" href="students/{{$student->id}}"  ><i class="fa-regular fa-eye"></i></a>
                                                         <a class="btn btn-warning m-3" href="students/{{$student->id}}/edit"  ><i class="fa-solid fa-pen-to-square"></i></a>
-                                                        <a class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a>
+                                                        <form action="students/{{$student->id}}" method="POST">
+                                                        {!! csrf_field() !!}
+                                                        @method("delete")
+                                                            
+                                                        <button class="btn btn-danger m-3" type="submit"><i class="fa-solid fa-trash"></i></button>
+                                                        </form>
+                                                        <!-- <a class="btn btn-danger m-3" data-toggle="modal" data-target="#logoutModal"><i class="fa-solid fa-trash"></i></a> -->
                                             </div>            
                                             </td>
                                         </tr>

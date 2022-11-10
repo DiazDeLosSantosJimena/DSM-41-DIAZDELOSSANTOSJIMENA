@@ -16,6 +16,7 @@ class subjects extends Model
         'description',
         ];
     
+        
         /*public function students() {
             return $this->belongsTo(students::class);
         

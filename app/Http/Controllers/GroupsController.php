@@ -18,6 +18,7 @@ class GroupsController extends Controller
         /* consulta eloquent larvavel */
         $groups = groups::all();
          //return $groups;
+         
        return view('Groups.index', compact('groups'));
        
     }
@@ -95,7 +96,7 @@ class GroupsController extends Controller
         $group = groups::findOrFail($id);
         $input=$request->all();
         $group->update($input);
-        return redirect('groups')->with('messageedit','Se ha actualizado el registro correctamente');
+        return redirect('groups')->with('info','Se ha actualizado el registro correctamente');
     }
 
     /**
@@ -113,7 +114,8 @@ class GroupsController extends Controller
         $group = groups::findOrFail($id);
 
         $group->delete();
-        return "El resgistro se elimino con exito";
+        return redirect('groups')->with('danger','correctamente el grupo');
+        //return "El resgistro se elimino con exito";
         //return view('Groups.index');
 
 

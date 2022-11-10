@@ -80,12 +80,13 @@ class StudentsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        $student = students::find($id);
+        $student = students::findOrFail($id);
         $input=$request->all();
         $student->update($input);
         return redirect('students')->with('message','Se ha actualizado el registro correctamente');
     }
 
+    
     /**
      * Remove the specified resource from storage.
      *
@@ -94,6 +95,9 @@ class StudentsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $student = students::findOrFail($id);
+
+        $student->delete();
+        return redirect('students')->with('danger','correctamente el estudiante');
     }
 }

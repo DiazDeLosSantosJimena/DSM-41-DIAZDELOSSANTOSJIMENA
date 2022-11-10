@@ -5,7 +5,7 @@ use Illuminate\Support\Facades\Route;
 //Mnadamos a llamar al controller que se utiliza
 //use App\Http\Controllers\Practica5;
 //use App\Http\Controllers\Practica6;
-use App\Http\Controllers\ApiGroupsController;
+use App\Http\Controllers\Api\GroupsController;
 use App\Http\Controllers\ApiStudentsController;
 use App\Http\Controllers\ApiSubjectsController;
 
@@ -36,7 +36,7 @@ Route::delete('mirutaapiD',[SubjectsController::class, 'index'])->name('subject'
 
 //Definimos una ruta Apiresource
 Route::Apiresource('subjects',ApiSubjectsController::class); 
-Route::Apiresource('groups',ApiGroupsController::class); 
+Route::Apiresource('groups',GroupsController::class); 
 Route::Apiresource('students',ApiStudentsController::class); 
 
 //Definimos una ruta pero solo especifico ciertos resource a utilizar
